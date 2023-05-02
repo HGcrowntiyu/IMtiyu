@@ -1,0 +1,11 @@
+Để lấy danh sách các chuyên mục (category) trong WordPress, chúng ta có thể sử dụng hàm get_categories().
+
+Dưới đây là đoạn code PHP để lấy danh sách các chuyên mục trong WordPress:
+<?php
+$categories = get_categories();
+
+foreach ( $categories as $category ) {
+    echo '<a href="' . get_category_link( $category->term_id ) . '">' . $category->name . '</a><br>';
+}
+?>
+Trong đoạn code trên, chúng ta sử dụng hàm get_categories() để lấy danh sách các chuyên mục trong WordPress. Sau đó, chúng ta sử dụng vòng lặp foreach để lặp lại từng chuyên mục và hiển thị tên chuyên mục và liên kết đến trang danh mục bằng cách sử dụng hàm get_category_link() và thuộc tính name của đối tượng chuyên mục.
