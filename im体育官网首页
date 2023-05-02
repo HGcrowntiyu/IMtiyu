@@ -1,0 +1,22 @@
+Để lấy bài viết mặc định trên WordPress, bạn có thể sử dụng hàm get_posts() của WordPress.
+
+Dưới đây là đoạn code PHP để lấy bài viết mặc định trên WordPress:
+<?php
+$default_post = get_posts( array(
+    'post_type'      => 'post',
+    'posts_per_page' => 1,
+    'post_status'    => 'publish',
+    'orderby'        => 'date',
+    'order'          => 'DESC',
+) );
+
+if ( ! empty( $default_post ) ) {
+    $default_post = $default_post[0];
+    $default_post_title = $default_post->post_title;
+    $default_post_content = $default_post->post_content;
+    $default_post_link = get_permalink( $default_post->ID );
+}
+?>
+Trong đoạn code trên, chúng ta sử dụng hàm get_posts() để lấy bài viết mặc định. Tham số array được truyền vào hàm này để chỉ định các điều kiện lọc cho các bài viết. Trong ví dụ này, chúng ta chỉ lấy bài viết đầu tiên (với posts_per_page được đặt là 1), đã được xuất bản (với post_status được đặt là publish) và được sắp xếp theo thời gian xuất bản mới nhất (với orderby được đặt là date và order được đặt là DESC).
+
+Sau khi lấy được bài viết mặc định, chúng ta có thể sử dụng các thuộc tính của đối tượng bài viết để hiển thị nội dung, tiêu đề và liên kết của bài viết đó. Ở đây, chúng ta lấy tiêu đề, nội dung và liên kết của bài viết bằng cách truy xuất các thuộc tính $default_post->post_title, $default_post->post_content và get_permalink( $default_post->ID 
